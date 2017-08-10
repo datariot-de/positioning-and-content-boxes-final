@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One');
+@import url('https://fonts.googleapis.com/css?family=Cardo');
+
+
+/* Clearfix prevents floating boxes floating out of container */
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Basic Font settings */
+
+html {
+  font-size: 16px;
+  font-family: 'Cardo', serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* And here follows your custom CSS */
+body {
+  background-image: url('../images/bg.png');
+  overflow-x: hidden;
+  margin: 0;
+}
+
+a {
+  color: #666;
+  font-weight: bold;
+}
+
+/* ------------------- */
+/* Sidebar             */
+/* ------------------- */
+
+/* style the label like a menu button */
+label[for="primary-nav-trigger"] {
+  position: fixed;
+  top: 1em;
+  right: 2em;
+  z-index: 2;
+  display: block;
+  padding: .35em .65em;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: -2px 0 2px rgba(0,0,0,.2);
+}
+
+/* hide the checkbox */
+#primary-nav-trigger {
+  display: none;
+}
+
+/* style the primary nav */
+#primary-nav {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  background: #fff;
+  top: 0;
+  right: -250px;
+  z-index: 1;
+  transition: right .5s;
+  box-shadow: -2px 0 2px rgba(0,0,0,.2);
+}
+
+#primary-nav ul {
+  padding: 3em 0 0 0;
+  list-style-type: none;
+
+}
+
+#primary-nav ul li {
+  border-bottom: 1px solid #eee;
+  padding: .5em;
+}
+
+/* if checkbox is shown, show the primary nav */
+#primary-nav-trigger:checked + #primary-nav {
+  right: 0;
+}
+
+/* -------------------  */
+/* Style main */
+/* -------------------  */
+main {
+  background-color: #fff;
+  margin: 4em 2em;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+/* -------------------  */
+/* Style main > article */
+/* -------------------  */
+/* nothing to do -> see media query */
+
+/* -------------------  */
+/* Style main > aside   */
+/* -------------------  */
+
+aside > *:first-child,
+article > *:first-child {
+  margin-top: 0;
+}
+
+aside > *:last-child {
+  margin-bottom: 0;
+}
+
+/* -------------------  */
+/* Style figure         */
+/* -------------------  */
+figure {
+  position: relative;
+  float: left;
+  width: 198px;
+  margin: 0 15px 0 0;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}
+
+figure figcaption {
+  position: absolute;
+  bottom: -30px;
+  width: 100%;
+  height: 20px;
+  padding: 5px;
+  transition: bottom .5s;
+  color: #fff;
+}
+
+figure figcaption a {
+  color: #fff;
+  text-decoration: none;
+}
+
+figure:hover figcaption {
+  bottom: 0;
+  background-color: rgba(0,0,0, .2);
+}
+
+aside {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+/* ---------------------- */
+/* Style aside in article */
+/* ---------------------- */
+
+article > aside {
+  float: right;
+  width: 168px;
+  margin: 0 0 15px 15px;
+}
+
+
+
+/* -------------------------------------------------- */
+/* You're an expert?                                  */
+/* use media query and make different top navigation, */
+/* do not show main > article and main > aside next   */
+/* each other on mobile but only desktop              */
+/* -------------------------------------------------- */
+
+@media screen and (min-width: 920px) {
+
+  /* deal with columns next to each other and main max-width */
+  main {
+    max-width: 900px;
+    margin: 2em auto;
+  }
+
+  main > article {
+    float: left;
+    width: 70%;
+    margin-right: 5%;
+    box-sizing: border-box;
+  }
+
+  main > aside {
+    float: left;
+    width: 25%;
+    box-sizing: border-box;
+  }
+
+  article > *:last-child {
+    margin-bottom: 0;
+  }
+
+  /* alter navigation and trigger */
+
+  label[for="primary-nav-trigger"] {
+    display: none;
+  }
+
+  #primary-nav {
+    position: static;
+    width: auto;
+  }
+
+  #primary-nav ul {
+    padding: 0;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  #primary-nav ul li {
+    display: inline-block;
+    border-bottom: none;
+  }
+
+  #primary-nav ul li:first-child {
+    padding-left: 0;
+  }
+}
